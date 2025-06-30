@@ -1,21 +1,23 @@
-import './App.css'
-import Home from "./pages/Home.tsx";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ImageGenerator from "./components/ImageGenerator.tsx";
+// src/App.tsx
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import ImageGenerator from './components/ImageGenerator';
+import Layout from "./components/Layout.tsx";
 
 function App() {
-
-  return (
-      <BrowserRouter>
-          <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<div>About Page</div>} />
-              <Route path="/contact" element={<div>Contact Page</div>} />
-              <Route path="/learn-more" element={<div>Learn More Page</div>} />
-              <Route path="/image-generator" element={<ImageGenerator />} />
-          </Routes>
-      </BrowserRouter>
-  )
+    return (
+        <Router>
+            <Routes>
+                <Route element={<Layout />}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/image-generator" element={<ImageGenerator />} />
+                    <Route path="/about" element={<div>About Page</div>} />
+                    <Route path="/contact" element={<div>Contact Page</div>} />
+                </Route>
+            </Routes>
+        </Router>
+    );
 }
 
-export default App
+export default App;
