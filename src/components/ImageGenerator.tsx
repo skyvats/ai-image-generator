@@ -106,7 +106,7 @@ const ImageGenerator: React.FC = () => {
             selectedModel
         ) {
             hasGeneratedFromState.current = true;
-            fetchImageForText(state.prompt);
+            fetchImageForText(state.prompt); // ✅ trigger once on entry
         }
     }, [state, selectedStyle, selectedModel]);
 

@@ -78,7 +78,7 @@ const Home: React.FC = () => {
                             Dive into the world of AI-driven creativity with AI Horizon.
                         </p>
                         <Link
-                            to="/learn-more"
+                            to="https://vyro.ai/"
                             className="inline-block px-8 py-4 bg-[color:var(--primary)] text-white rounded-full font-semibold text-lg hover:bg-[color:var(--secondary)] hover:shadow-lg transition-all duration-300"
                         >
                             Learn More
@@ -86,13 +86,6 @@ const Home: React.FC = () => {
                     </div>
                 </section>
             </main>
-
-            {/* Footer */}
-            <footer className="w-full py-8 bg-[color:var(--background)]/95 border-t border-[color:var(--border)] text-center">
-                <p className="text-[color:var(--muted)]">
-                    &copy; 2025 AI Horizon. All rights reserved.
-                </p>
-            </footer>
         </div>
     );
 };

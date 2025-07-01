@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/react.svg';
+import {Github, Linkedin} from "lucide-react";
 
 const Layout: React.FC = () => {
     return (
@@ -36,6 +37,32 @@ const Layout: React.FC = () => {
 
             {/* Main Page Content */}
             <Outlet />
+
+            {/* Footer */}
+            <footer className="w-full py-8 bg-[color:var(--background)]/95 border-t border-[color:var(--border)] text-center">
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-[color:var(--muted)]">
+                    <p>&copy; 2025 AI Horizon. All rights reserved.</p>
+                    <div className="flex gap-4">
+                        <a
+                            href="https://github.com/skyvats"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-[color:var(--foreground)] transition"
+                        >
+                            <Github size={20} />
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/akash-ranjan-14a849328/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-[color:var(--foreground)] transition"
+                        >
+                            <Linkedin size={20} />
+                        </a>
+                    </div>
+                </div>
+            </footer>
+
         </div>
     );
 };
