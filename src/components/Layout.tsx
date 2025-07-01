@@ -1,50 +1,54 @@
 // src/components/Layout.tsx
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
-import { Link } from 'react-router-dom';
 import Logo from '../assets/react.svg';
-import {Github, Linkedin} from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import MobileMenu from "./MobileMenu.tsx";
 
 const Layout: React.FC = () => {
     return (
         <div className="min-h-screen w-full font-sans bg-[color:var(--background)] text-[color:var(--foreground)]">
-            {/* Shared Topbar */}
+            {/* Topbar */}
             <header className="w-full px-6 py-4 sm:px-10 sm:py-6 bg-[color:var(--background)]/95 backdrop-blur-lg sticky top-0 z-30 border-b border-[color:var(--border)] shadow-lg">
-                <div className="relative flex items-center justify-between sm:justify-start w-full">
+                <div className="flex items-center justify-between w-full">
 
-                    {/* Mobile Menu Icon - far left on mobile */}
+                    {/* Left side: Mobile Menu */}
                     <div className="sm:hidden z-10">
                         <MobileMenu />
                     </div>
 
-                    {/* Logo - center on mobile, normal flow on sm+ */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 sm:relative sm:left-0 sm:transform-none flex items-center space-x-4">
+                    {/* Center: Logo + Text */}
+                    <div className="flex items-center space-x-4">
                         <img
                             src={Logo}
                             alt="AI Horizon Logo"
                             className="h-12 w-12 sm:h-14 sm:w-14 transition-transform duration-300 hover:scale-110 hover:rotate-6"
                         />
-                        <h1 className="pl-15 text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[color:var(--primary)] to-[color:var(--secondary)]">
+                        <h1 className="whitespace-nowrap text-xl sm:text-3xl md:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[color:var(--primary)] to-[color:var(--secondary)]">
                             AI Horizon
                         </h1>
                     </div>
 
-                    {/* Desktop Nav - hidden on mobile */}
-                    <nav className="hidden sm:flex items-center space-x-4 sm:space-x-8 ml-auto">
-                        <Link to="/" className="text-sm sm:text-base font-medium hover:text-[color:var(--primary)] transition-colors duration-200">
-                            Home
-                        </Link>
-                        <Link to="/about" className="text-sm sm:text-base font-medium hover:text-[color:var(--primary)] transition-colors duration-200">
-                            About
-                        </Link>
+                    {/* Right side: Desktop Nav + Theme Toggle */}
+                    <div className="flex items-center space-x-4 sm:space-x-8">
+                        {/* Navigation - shown only on sm+ */}
+                        <nav className="hidden sm:flex items-center space-x-4 sm:space-x-8">
+                            <Link to="/" className="text-sm sm:text-base font-medium hover:text-[color:var(--primary)] transition-colors duration-200">
+                                Home
+                            </Link>
+                            <Link to="/about" className="text-sm sm:text-base font-medium hover:text-[color:var(--primary)] transition-colors duration-200">
+                                About
+                            </Link>
+                        </nav>
+
+                        {/* Always visible ThemeToggle */}
                         <ThemeToggle />
-                    </nav>
+                    </div>
                 </div>
             </header>
 
-            {/* Main Page Content */}
+            {/* Main content */}
             <Outlet />
 
             {/* Footer */}
@@ -71,7 +75,6 @@ const Layout: React.FC = () => {
                     </div>
                 </div>
             </footer>
-
         </div>
     );
 };
