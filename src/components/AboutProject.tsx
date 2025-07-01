@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const AboutProject: React.FC = () => {
     const [experienceDuration, setExperienceDuration] = useState("");
@@ -26,13 +27,27 @@ const AboutProject: React.FC = () => {
     }, []);
 
     return (
-        <div className="max-w-7xl mx-auto p-8 font-sans text-[color:var(--foreground)] bg-[color:var(--background-soft)] rounded-3xl shadow-2xl border border-[color:var(--border)] min-h-screen transition-colors duration-500">
-            <h1 className="text-5xl font-extrabold tracking-tight mb-8 pb-4 border-b-2 border-[color:var(--border)]">
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-7xl mx-auto p-8 font-sans text-[color:var(--foreground)] bg-[color:var(--background-soft)] rounded-3xl shadow-2xl border border-[color:var(--border)] min-h-screen transition-colors duration-500"
+        >
+            <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-5xl font-extrabold tracking-tight mb-8 pb-4 border-b-2 border-[color:var(--border)]"
+            >
                 About This Project
-            </h1>
+            </motion.h1>
 
-            {/* Project Overview */}
-            <section className="grid gap-6 mb-12">
+            <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="grid gap-6 mb-12"
+            >
                 <h2 className="text-3xl font-bold text-[color:var(--primary)] animate-fade-in">AI Text-to-Image Generator</h2>
                 <p className="leading-relaxed text-lg max-w-3xl text-[color:var(--foreground)]/90">
                     This project showcases my expertise as a React developer through a Text-to-Image Generator powered by the Vyro AI API. Users can input prompts to generate stunning AI-crafted images in styles like anime, cinematic, and digital art.
@@ -40,10 +55,14 @@ const AboutProject: React.FC = () => {
                 <p className="leading-relaxed text-lg max-w-3xl text-[color:var(--foreground)]/90">
                     Built with <strong className="text-[color:var(--primary)]">React + TypeScript</strong> and styled with <strong className="text-[color:var(--primary)]">Tailwind CSS</strong>, it features full-screen image viewing, seamless downloads, and fluid transitions. This portfolio project is designed to highlight my frontend and full-stack skills, aiming to attract exciting career opportunities.
                 </p>
-            </section>
+            </motion.section>
 
-            {/* Resume Section */}
-            <section className="bg-[color:var(--background)] rounded-3xl shadow-lg border border-[color:var(--border)] p-10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="bg-[color:var(--background)] rounded-3xl shadow-lg border border-[color:var(--border)] p-10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
                 <h2 className="text-3xl font-bold text-[color:var(--primary)] mb-8 border-l-4 pl-4 border-[color:var(--primary)] flex items-center">
                     <span className="mr-2">📄</span> Resume
                 </h2>
@@ -160,8 +179,8 @@ const AboutProject: React.FC = () => {
                         </ul>
                     </div>
                 </div>
-            </section>
-        </div>
+            </motion.section>
+        </motion.div>
     );
 };
 
