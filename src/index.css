@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
 :root {
+
+    --text-primary: #1e293b;      /* slate-800 */
+    --text-secondary: #334155;   /* slate-700 */
+    --text-accent: #2563eb;      /* blue-600 */
+    --text-heading: #1d4ed8;     /* blue-700 */
+    --text-green: #15803d;
+
     --background: #ffffff;
     --foreground: #1f2937;
     --border: #e5e7eb;
@@ -10,6 +17,13 @@
 }
 
 .dark {
+
+    --text-primary: #e2e8f0;
+    --text-secondary: #cbd5e1;
+    --text-accent: #60a5fa;
+    --text-heading: #93c5fd;
+    --text-green: #4ade80;
+
     --background: #0f172a;
     --foreground: #f3f4f6;
     --border: #1e293b;

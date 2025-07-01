@@ -27,9 +27,9 @@ const Layout: React.FC = () => {
                     <Link to="/about" className="text-sm sm:text-base font-medium hover:text-[color:var(--primary)] transition-colors duration-200">
                         About
                     </Link>
-                    <Link to="/contact" className="text-sm sm:text-base font-medium hover:text-[color:var(--primary)] transition-colors duration-200">
+                    {/*<Link to="/contact" className="text-sm sm:text-base font-medium hover:text-[color:var(--primary)] transition-colors duration-200">
                         Contact
-                    </Link>
+                    </Link>*/}
                     <ThemeToggle />
                 </nav>
             </header>

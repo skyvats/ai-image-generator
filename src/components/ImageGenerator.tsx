@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Download, Expand } from 'lucide-react';
@@ -13,6 +13,8 @@ const ImageGenerator: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [imageData, setImageData] = useState<string | null>(null);
     const [storedImages, setStoredImages] = useState<string[]>(JSON.parse(localStorage.getItem('generatedImages') || '[]'));
+
+    const hasGeneratedFromState = useRef(false); // To ensure one-time generation only
 
     const aspectRatios: Record<string, string> = {
         "1:1": "aspect-square",
@@ -94,16 +96,29 @@ const ImageGenerator: React.FC = () => {
         }
     };
 
+    // 🔁 Trigger once if prompt was passed via props
+    useEffect(() => {
+        if (
+            !hasGeneratedFromState.current &&
+            state?.prompt &&
+            state.prompt.trim().length > 0 &&
+            selectedStyle &&
+            selectedModel
+        ) {
+            hasGeneratedFromState.current = true;
+            fetchImageForText(state.prompt);
+        }
+    }, [state, selectedStyle, selectedModel]);
+
+
     return (
         <div className="relative min-h-screen bg-[color:var(--background)] text-[color:var(--foreground)] p-6 sm:p-10 overflow-hidden">
-            {/* Glowing Backgrounds */}
             <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] left-[30%] w-80 h-80 bg-[color:var(--primary)]/10 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-0 right-[-10%] w-96 h-96 bg-[color:var(--secondary)]/20 rounded-full blur-3xl animate-pulse" />
             </div>
 
             <div className="grid md:grid-cols-4 gap-6 z-10 relative">
-                {/* Sidebar */}
                 <motion.div
                     initial={{ opacity: 0, x: -40 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -165,7 +180,6 @@ const ImageGenerator: React.FC = () => {
                     </button>
                 </motion.div>
 
-                {/* Main Image Viewer & Gallery */}
                 <motion.div
                     initial={{ opacity: 0, x: 40 }}
                     animate={{ opacity: 1, x: 0 }}

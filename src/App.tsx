@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ImageGenerator from './components/ImageGenerator';
 import Layout from "./components/Layout.tsx";
+import AboutProject from "./components/AboutProject.tsx";
+import ContactInfo from "./components/ContactInfo/ContactInfo.tsx";
 
 function App() {
     return (
@@ -12,8 +14,8 @@ function App() {
                 <Route element={<Layout />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/image-generator" element={<ImageGenerator />} />
-                    <Route path="/about" element={<div>About Page</div>} />
-                    <Route path="/contact" element={<div>Contact Page</div>} />
+                    <Route path="/about" element={<AboutProject/>} />
+                    <Route path="/contact" element={<ContactInfo/>} />
                 </Route>
             </Routes>
         </Router>
