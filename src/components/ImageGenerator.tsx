@@ -32,8 +32,8 @@ const ImageGenerator: React.FC = () => {
         formData.append("aspect_ratio", selectedModel);
 
         const tokens = [
-            "vk-fcsZYzYfcnML36He4Y263aHASiEbhwnDdVY7SFy8vFCcY5_",
-            "vk-G3bYvHnonDWuoFGIEwI7Be3VDO6EcjU2qr29JdqbuIBl6c5_"
+            "vk-fcsZYzYfcnML36He4Y263aHASiEbhwnDdVY7SFy8vFCcY5",
+            "vk-G3bYvHnonDWuoFGIEwI7Be3VDO6EcjU2qr29JdqbuIBl6c5"
         ];
 
         for (const token of tokens) {
@@ -186,7 +186,11 @@ const ImageGenerator: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="md:col-span-3 space-y-8"
                 >
-                    <div className={`relative w-full ${aspectRatios[selectedModel]} bg-[color:var(--background-soft)] border border-[color:var(--border)] rounded-2xl flex items-center justify-center overflow-hidden transition-all duration-300`}>
+                    <div
+                        className={`relative w-full ${
+                            aspectRatios[selectedModel]
+                        } max-h-[400px] md:max-h-[500px] bg-[color:var(--background-soft)] border border-[color:var(--border)] rounded-2xl flex items-center justify-center overflow-hidden transition-all duration-300`}
+                    >
                         {loading ? (
                             <p className="text-lg animate-pulse text-[color:var(--primary)] font-semibold">Generating image...</p>
                         ) : imageData ? (
